@@ -1,0 +1,150 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+'부록은 생략함 https://plantuml.com/ko/creole #MindMap
+
+@startuml Creole.puml(id=EX1)
+Alice -> Bob : hello --there-- here
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stricken-out--
+  This is __underlined__
+  This is ~~wave-underlined~~
+end note
+@enduml
+
+
+@startuml Creole.puml(id=EX2)
+object demo {
+  * Bullet list
+  * Second item
+}
+note left
+  * Bullet list
+  * Second item
+  ** Sub item
+end note
+
+legend
+  # Numbered list
+  # Second item
+  ## Sub item
+  ## Another sub item
+        * Can't quite mix
+        * Numbers and bullets
+  # Third item
+end legend
+@enduml
+
+
+@startuml Creole.puml(id=EX3)
+object demo {
+  This is not ~___underscored__.
+  This is not ~""monospaced"".
+}
+@enduml
+
+
+@startuml Creole.puml(id=EX4)
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+@enduml
+
+
+@startuml Creole.puml(id=EX13)
+
+skinparam backgroundcolor AntiqueWhite/Gold
+skinparam classBackgroundColor Wheat|CornflowerBlue
+
+class Foo #red-green
+'note left of Foo #blue/9932CC
+    title
+    표 그리기
+    파이프로 열 구분한다.
+    <#FFF,#000>|= 설명 |= 정방향 |= 역방향 |= 좌 |= 우 |
+    <#FFF>| 선언  | direction | reverseDirection | left | right |
+    end title
+'end note
+
+package example #GreenYellow/LightGoldenRodYellow {
+  class Dummy
+}
+@enduml
+
+
+
+@startuml Creole.puml(id=EX41)
+object demo {
+  * Bullet list
+  * Second item
+}
+note left
+  * Bullet list
+  * Second item
+  ** Sub item
+end note
+
+legend
+  # Numbered list
+  # Second item
+  ## Sub item
+  ## Another sub item
+        * Can't quite mix
+        * Numbers and bullets
+  # Third item
+end legend
+@enduml
+
+
+@startuml Creole.puml(id=EX5)
+Alice -> Bob : hello --there-- here
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stricken-out--
+  This is __underlined__
+  This is ~~wave-underlined~~
+end note
+@enduml
+
+
+@startuml Creole.puml(id=EX6)
+object demo {
+  This is not ~___underscored__.
+  This is not ~""monospaced"".
+}
+@enduml
+
+
+@startuml Creole.puml(id=EX7)
+Alice -> Bob : Hello <:1f600:>
+return <:innocent:>
+Alice -> Bob : Without color: <#0:sunglasses:>
+Alice -> Bob : Change color: <#green:sunny:>
+@enduml
+
+
+@startuml Creole.puml(id=EX8)
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+@enduml

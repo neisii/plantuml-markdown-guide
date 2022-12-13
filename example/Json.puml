@@ -1,0 +1,12 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Json.puml(id=EX1)
+class Class
+object Object
+json JSON {
+   "fruit":"Apple",
+   "size":"Large",
+   "color": ["Red", "Green"]
+}
+@enduml

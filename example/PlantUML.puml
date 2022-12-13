@@ -1,0 +1,282 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+
+
+
+@startuml PlantUML.puml(id=PAGE1)
+!include ../example/structure.puml!OPTION_USE_TEOZ
+
+{start} Alice -> Bob : start doing things during duration
+Bob -> Max : something
+Max -> Bob : something else
+{end} Bob -> Alice : finish
+
+{start} <-> {end} : some time
+@enduml
+
+
+
+@startuml
+!include ../example/structure.puml!OPTION_USE_TEOZ
+
+{start} Alice -> Bob : start doing things during duration
+Bob -> Max : something
+Max -> Bob : something else
+{end} Bob -> Alice : finish
+
+{start} <-> {end} : some time
+@enduml
+
+
+
+@startuml
+!include ../example/structure.puml!OPTION_USE_TEOZ
+box "Internal Service" #LightBlue
+participant Bob
+box "Subteam"
+participant Alice
+participant John
+end box
+
+end box
+participant Other
+
+Bob -> Alice : hello
+Alice -> John : hello
+John -> Other: Hello
+@enduml
+
+@startuml
+participant Alice as a
+participant Bob   as b
+a ->     b : ""->   ""
+a ->>    b : ""->>  ""
+a -/     b : ""-/   ""
+a -//    b : ""-////""
+a -/     b : ""-/   ""
+a -//    b : ""-//  ""
+a ->x    b : ""->x  ""
+a x->    b : ""x->  ""
+a o->    b : ""o->  ""
+a ->o    b : ""->o  ""
+a o->o   b : ""o->o ""
+a <->    b : ""<->  ""
+a o<->o  b : ""o<->o""
+a x<->x  b : ""x<->x""
+a ->>o   b : ""->>o ""
+a -/o    b : ""-/o  ""
+a -//o   b : ""-////o""
+a -/o    b : ""-/o  ""
+a -//o   b : ""-//o ""
+a x->o   b : ""x->o ""
+@enduml
+
+
+@startuml
+participant Alice as a
+participant Bob   as b
+a ->     a : ""->   ""
+a ->>    a : ""->>  ""
+a -/     a : ""-/   ""
+a -//    a : ""-////""
+a -/     a : ""-/   ""
+a -//    a : ""-//  ""
+a ->x    a : ""->x  ""
+a x->    a : ""x->  ""
+a o->    a : ""o->  ""
+a ->o    a : ""->o  ""
+a o->o   a : ""o->o ""
+a <->    a : ""<->  ""
+a o<->o  a : ""o<->o""
+a x<->x  a : ""x<->x""
+a ->>o   a : ""->>o ""
+a -/o    a : ""-/o  ""
+a -//o   a : ""-////o""
+a -/o    a : ""-/o  ""
+a -//o   a : ""-//o ""
+a x->o   a : ""x->o ""
+@enduml
+
+
+
+
+@startuml
+participant Alice as a
+participant Bob   as b
+[->      b : ""[->   ""
+[->>     b : ""[->>  ""
+[-/      b : ""[-/   ""
+[-//     b : ""[-////""
+[-/      b : ""[-/   ""
+[-//     b : ""[-//  ""
+[->x     b : ""[->x  ""
+[x->     b : ""[x->  ""
+[o->     b : ""[o->  ""
+[->o     b : ""[->o  ""
+[o->o    b : ""[o->o ""
+[<->     b : ""[<->  ""
+[o<->o   b : ""[o<->o""
+[x<->x   b : ""[x<->x""
+[->>o    b : ""[->>o ""
+[-/o     b : ""[-/o  ""
+[-//o    b : ""[-////o""
+[-/o     b : ""[-/o  ""
+[-//o    b : ""[-//o ""
+[x->o    b : ""[x->o ""
+@enduml
+
+
+
+@startuml
+participant Alice as a
+participant Bob   as b
+a ->]      : ""->]   ""
+a ->>]     : ""->>]  ""
+a -/]      : ""-/]   ""
+a -//]     : ""-////]""
+a -/]      : ""-/]   ""
+a -//]     : ""-//]  ""
+a ->x]     : ""->x]  ""
+a x->]     : ""x->]  ""
+a o->]     : ""o->]  ""
+a ->o]     : ""->o]  ""
+a o->o]    : ""o->o] ""
+a <->]     : ""<->]  ""
+a o<->o]   : ""o<->o]""
+a x<->x]   : ""x<->x]""
+a ->>o]    : ""->>o] ""
+a -/o]     : ""-/o]  ""
+a -//o]    : ""-////o]""
+a -/o]     : ""-/o]  ""
+a -//o]    : ""-//o] ""
+a x->o]    : ""x->o] ""
+@enduml
+
+
+
+@startuml
+participant Alice as a
+participant Bob   as b
+a ->     b : //Long long label//
+?->      b : ""?->   ""
+?->>     b : ""?->>  ""
+?-/      b : ""?-/   ""
+?-//     b : ""?-////""
+?-/      b : ""?-/   ""
+?-//     b : ""?-//  ""
+?->x     b : ""?->x  ""
+?x->     b : ""?x->  ""
+?o->     b : ""?o->  ""
+?->o     b : ""?->o  ""
+?o->o    b : ""?o->o ""
+?<->     b : ""?<->  ""
+?o<->o   b : ""?o<->o""
+?x<->x   b : ""?x<->x""
+?->>o    b : ""?->>o ""
+?-/o     b : ""?-/o  ""
+?-//o    b : ""?-////o ""
+?-/o     b : ""?-/o  ""
+?-//o    b : ""?-//o ""
+?x->o    b : ""?x->o ""
+@enduml
+
+
+@startuml
+participant Alice as a
+participant Bob   as b
+a ->     b : //Long long label//
+a ->?      : ""->?   ""
+a ->>?     : ""->>?  ""
+a -/?      : ""-/?   ""
+a -//?     : ""-////?""
+a -/?      : ""-/?   ""
+a -//?     : ""-//?  ""
+a ->x?     : ""->x?  ""
+a x->?     : ""x->?  ""
+a o->?     : ""o->?  ""
+a ->o?     : ""->o?  ""
+a o->o?    : ""o->o? ""
+a <->?     : ""<->?  ""
+a o<->o?   : ""o<->o?""
+a x<->x?   : ""x<->x?""
+a ->>o?    : ""->>o? ""
+a -/o?     : ""-/o?  ""
+a -//o?    : ""-////o?""
+a -/o?     : ""-/o?  ""
+a -//o?    : ""-//o? ""
+a x->o?    : ""x->o? ""
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+@startuml Arrow.puml(id=EX1)
+participant A #FF0
+participant B #0F0
+
+A ->(10) B : 10도 삐뚤어지겠어
+A ->(50) B : 50도 삐뚤어지겠어
+B ->(90) A : 나도 질 수 없지, 90도 가즈아
+@enduml
+
+@startuml Arrow.puml(id=EX8)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("화살표 스타일 변경")
+
+Bob ->x Alice
+Bob -> Alice
+Bob ->> Alice
+Bob -/ Alice
+Bob //- Alice
+Bob //-- Alice
+
+Bob ->o Alice
+Bob o//-- Alice
+
+Bob <-> Alice
+Bob <->o Alice
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+
+
+@startuml
+Room o- Student
+Room *-- Chair
+@enduml
+
+@startuml
+Student -o Room
+Chair --* Room
+@enduml
+
+@startuml
+foo -left-> dummyLeft
+foo -right-> dummyRight
+foo -up-> dummyUp
+foo -down-> dummyDown
+@enduml
+
+@startuml
+left to right direction
+foo -left-> dummyLeft
+foo -right-> dummyRight
+foo -up-> dummyUp
+foo -down-> dummyDown
+@enduml
+
+
+

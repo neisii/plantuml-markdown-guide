@@ -1,0 +1,281 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+'참여자 순서 정의
+@startuml Structure.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("참여자 순서 정의")
+
+'blocks of example code
+actor Bob order 1 #red
+actor Alice order 4 #blue
+actor Yoon order 3 #green
+actor May order 2 #yellow
+
+Alice->Bob: Authentication Request
+Bob->Alice: Authentication Response
+Bob->Yoon: Log transaction
+
+'Explain to How to use
+rnote across
+<code>
+{Component} {UID} order {number}
+</code>
+----
+<code>
+actor Bob order 1 #red
+actor Alice order 4 #blue
+actor Yoon order 3 #green
+actor May order 2 #yellow
+</code>
+end note
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml Style.puml(id=EX2)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("요소 별 색상 부여")
+Bob -[#red]> Alice : hello
+Alice -[#0000FF]->Bob : ok
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Style.puml(id=EX3)
+actor foo
+foo --> (bar) : normal
+foo --> (bar1) #line:red;line.bold;text:red  : red bold
+foo --> (bar2) #green;line.dashed;text:green : green dashed
+foo --> (bar3) #blue;line.dotted;text:blue   : blue dotted
+@enduml
+
+
+
+@startuml Style.puml(id=EX4)
+actor a
+actor b #pink;line:red;line.bold;text:red
+usecase c #palegreen;line:green;line.dashed;text:green
+usecase d #aliceblue;line:blue;line.dotted;text:blue
+@enduml
+
+@startuml Style.puml(id=EX5)
+(First usecase)/
+(Another usecase)/ as (UC2)
+usecase/ UC3
+usecase/ (Last/nusecase) as UC4
+
+@enduml
+
+
+@startuml Style.puml(id=EX6)
+:First Actor:/
+:Another/nactor:/ as Man2
+actor/ Woman3
+actor/ :Last actor: as Person1
+
+@enduml
+
+
+@startuml Style.puml(id=EX7)
+left to right direction
+skinparam packageStyle rectangle
+actor customer
+actor clerk
+rectangle checkout {
+  customer -- (checkout)
+  (checkout) .> (payment) : include
+  (help) .> (checkout) : extends
+  (checkout) -- clerk
+}
+@enduml
+
+
+@startuml Style.puml(id=EX8)
+skinparam handwritten true
+
+skinparam usecase {
+BackgroundColor DarkSeaGreen
+BorderColor DarkSlateGray
+
+BackgroundColor<< Main >> YellowGreen
+BorderColor<< Main >> YellowGreen
+
+ArrowColor Olive
+ActorBorderColor black
+ActorFontName Courier
+
+ActorBackgroundColor<< Human >> Gold
+}
+
+User << Human >>
+:Main Database: as MySql << Application >>
+(Start) << One Shot >>
+(Use the application) as (Use) << Main >>
+
+User -> (Start)
+User --> (Use)
+
+MySql --> (Use)
+
+@enduml
+
+
+@startuml Style.puml(id=EX9)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("Crelo")
+
+participant Alice
+participant "The **Famous** Bob" as Bob
+
+Alice -> Bob : hello --there--
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stroked--
+  This is __underlined__
+  This is ~~waved~~
+end note
+
+Alice -> Bob : A //well formatted// message
+note right of Alice
+ This is <back:cadetblue><size:18>displayed</size></back>
+ __left of__ Alice.
+end note
+note left of Bob
+ <u:red>This</u> is <color #118888>displayed</color>
+ **<color purple>left of</color> <s:red>Alice</strike> Bob**.
+end note
+note over Alice, Bob
+ <w:#FF33FF>This is hosted</w> by <img sourceforge.jpg>
+end note
+@enduml
+
+
+
+@startuml Style.puml(id=EX10)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("스테레오 타입")
+
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,#ADD1B2) Testable >>
+
+Bob->Alice: First message
+@enduml
+
+
+
+@startuml Style.puml(id=EX11)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("스테레오 타입2")
+
+skinparam guillemet false
+participant "Famous Bob" as Bob << Generated >>
+participant Alice << (C,#ADD1B2) Testable >>
+
+Bob->Alice: First message
+
+@enduml
+
+
+
+
+@startuml
+:* You can change <color:red>text color</color>
+* You can change <back:cadetblue>background color</back>
+* You can change <size:18>size</size>
+* You use <u>legacy</u> <b>HTML <i>tag</i></b>
+* You use <u:red>color</u> <s:green>in HTML</s> <w:#0000FF>tag</w>
+----
+* Use image : <img:http://plantuml.com/logo3.png>
+;
+@enduml
+
+@startuml
+hide footbox
+note over Source
+<code>
+  This is <b>bold</b>
+  This is <i>italics</i>
+  This is <font:monospaced>monospaced</font>
+  This is <s>stroked</s>
+  This is <u>underlined</u>
+  This is <w>waved</w>
+  This is <s:green>stroked</s>
+  This is <u:red>underlined</u>
+  This is <w:#0000FF>waved</w>
+  This is <b>a bold text containing <plain>plain text</plain> inside</b>
+  -- other examples --
+  This is <color:blue>Blue</color>
+  This is <back:orange>Orange background</back>
+  This is <size:20>big</size>
+</code>
+end note
+/note over Output
+  This is <b>bold</b>
+  This is <i>italics</i>
+  This is <font:monospaced>monospaced</font>
+  This is <s>stroked</s>
+  This is <u>underlined</u>
+  This is <w>waved</w>
+  This is <s:green>stroked</s>
+  This is <u:red>underlined</u>
+  This is <w:#0000FF>waved</w>
+  This is <b>a bold text containing <plain>plain text</plain> inside</b>
+  -- other examples --
+  This is <color:blue>Blue</color>
+  This is <back:orange>Orange background</back>
+  This is <size:20>big</size>
+end note
+@enduml
+
+
+@startuml
+:<code>
+This is the "caffeine" molecule: C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>
+</code>
+This is the "caffeine" molecule: C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>
+----
+<code>
+This is the Pythagorean theorem: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>
+</code>
+This is the Pythagorean theorem: a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>;
+@enduml
+
+
+@startuml
+title: <size:20><&heart>Use of OpenIconic<&heart></size>
+class Wifi
+note left
+  Click on <&wifi>
+end note
+@enduml
+
+
+@startuml
+Alice -> Bob: Authentication Request
+alt#Gold #LightBlue Successful case
+    Bob -> Alice: Authentication Accepted
+else #Pink Failure
+    Bob -> Alice: Authentication Rejected
+end
+@enduml
+
+
+
+@startuml
+mainframe This is a **mainframe**
+Alice->Bob : Hello
+@enduml

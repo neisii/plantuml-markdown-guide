@@ -1,0 +1,121 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Table.puml(id=EX1)
+skinparam backgroundcolor AntiqueWhite/Gold
+
+title
+표 그리기
+파이프로 열 구분한다.
+<#FFF,#000>|= 설명 |= 정방향 |= 역방향 |= 좌 |= 우 |
+<#FFF>| 선언  | direction | reverseDirection | left | right |
+
+<#lightblue,#red>|=  Step  |=  Date  |=  Name  |=  Status  |=  Link  |
+<#lightgreen>|  1.1  |  TBD  | plantuml news |<#Navy><color:OrangeRed><b> Unknown  | [[https://plantuml.com/news plantuml news]] |
+
+|= |= table |= header |
+| a | table | row |
+|<#FF8080> red |<#80FF80> green |<#8080FF> blue |
+<#yellow>| b | table | row |
+end title
+
+
+node n
+note right of n
+  <#FBFB77,#FBFB77>|= Husky / Yorkie |= Foo |
+  | SourceTree1 | foo1 |
+  | ST2 | foo2 |
+end note
+
+
+
+note as deepCSS0
+  |<#white> Husky / Yorkie |
+  |=<#gainsboro> SourceTree0 |
+endnote
+
+note as deepCSS1
+  |= <#white> Husky / Yorkie |= Foo |
+  |<#gainsboro><r> SourceTree1 | foo1 |
+endnote
+
+note as deepCSS2
+  |= Husky / Yorkie |
+  |<#gainsboro> SourceTree2 |
+endnote
+
+note as deepCSS3
+  <#white>|= Husky / Yorkie |= Foo |
+  |<#gainsboro> SourceTree1 | foo1 |
+endnote
+
+@enduml
+
+
+
+
+@startuml Table.puml(id=EX41)
+object demo {
+  * Bullet list
+  * Second item
+}
+note left
+  * Bullet list
+  * Second item
+  ** Sub item
+end note
+
+legend
+  # Numbered list
+  # Second item
+  ## Sub item
+  ## Another sub item
+        * Can't quite mix
+        * Numbers and bullets
+  # Third item
+end legend
+@enduml
+
+
+@startuml Table.puml(id=EX5)
+Alice -> Bob : hello --there-- here
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stricken-out--
+  This is __underlined__
+  This is ~~wave-underlined~~
+end note
+@enduml
+
+
+@startuml Table.puml(id=EX6)
+object demo {
+  This is not ~___underscored__.
+  This is not ~""monospaced"".
+}
+@enduml
+
+
+@startuml Table.puml(id=EX7)
+Alice -> Bob : Hello <:1f600:>
+return <:innocent:>
+Alice -> Bob : Without color: <#0:sunglasses:>
+Alice -> Bob : Change color: <#green:sunny:>
+@enduml
+
+
+@startuml Table.puml(id=EX8)
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+@enduml

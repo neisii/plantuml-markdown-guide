@@ -1,0 +1,23 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Comment.puml(id=EX1)
+note left
+  '이것은 한줄 주석입니다.
+  주석은 다이어그램에 그려지지 않습니다.
+/'
+ 이것은 여러줄 주석입니다.
+ 슬래시(/) 문자와 따옴표(') 문자 사이를 함께 사용하면 여러 줄에 걸쳐 주석을 입력할 수 있다.
+ 그렇다고 합니다.
+ '/
+ 이건 주석이 아닙니다.
+end note
+@enduml
+
+@startuml Comment.puml(id=EX2)
+!include practice-include.puml!TAG3
+!include practice-include.puml!TAG2
+!include practice-include.puml!TAG1
+'note left Alice: This is description
+AAA -> BBB
+@enduml

@@ -1,0 +1,595 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Sprite.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+'선언
+sprite $spriteExampleSmall [16x16/16] {
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+F999998888877777666665555544444333332222221111100000F
+FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+}
+
+title <사용자 정의 스프라이트(아스키아트)>
+
+circle AA
+
+rectangle Sprite-example-1 {
+    note top
+    <코드>
+    <code>
+        sprite $spriteExampleSmall [16x16/16] {
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        F999998888877777666665555544444333332222221111100000F
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        }
+    </code>
+    ----
+    <용례>
+    <code>
+        <$spriteExampleSmall>
+    </code>
+    ----
+    <결과> <$spriteExampleSmall>
+    end note
+}
+@enduml
+
+
+
+
+@startuml(id=listsprite)
+listsprite
+@enduml
+
+
+@startuml(id=stdlib)
+stdlib
+@enduml
+
+
+@startuml(id=archimate)
+!include <archimate/Archimate>
+
+title Archimate Sample - Internet Browser
+
+' Elements
+Business_Object(businessObject, "A Business Object")
+Business_Process(someBusinessProcess,"Some Business Process")
+Business_Service(itSupportService, "IT Support for Business (Application Service)")
+
+Application_DataObject(dataObject, "Web Page Data \n 'on the fly'")
+Application_Function(webpageBehaviour, "Web page behaviour")
+Application_Component(ActivePartWebPage, "Active Part of the web page \n 'on the fly'")
+
+Technology_Artifact(inMemoryItem,"in memory / 'on the fly' html/javascript")
+Technology_Service(internetBrowser, "Internet Browser Generic & Plugin")
+Technology_Service(internetBrowserPlugin, "Some Internet Browser Plugin")
+Technology_Service(webServer, "Some web server")
+
+'Relationships
+Rel_Flow_Left(someBusinessProcess, businessObject, "")
+Rel_Serving_Up(itSupportService, someBusinessProcess, "")
+Rel_Specialization_Up(webpageBehaviour, itSupportService, "")
+Rel_Flow_Right(dataObject, webpageBehaviour, "")
+Rel_Specialization_Up(dataObject, businessObject, "")
+Rel_Assignment_Left(ActivePartWebPage, webpageBehaviour, "")
+Rel_Specialization_Up(inMemoryItem, dataObject, "")
+Rel_Realization_Up(inMemoryItem, ActivePartWebPage, "")
+Rel_Specialization_Right(inMemoryItem,internetBrowser, "")
+Rel_Serving_Up(internetBrowser, webpageBehaviour, "")
+Rel_Serving_Up(internetBrowserPlugin, webpageBehaviour, "")
+Rel_Aggregation_Right(internetBrowser, internetBrowserPlugin, "")
+Rel_Access_Up(webServer, inMemoryItem, "")
+Rel_Serving_Up(webServer, internetBrowser, "")
+@enduml
+
+
+@startuml(id=awslib)
+'Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+'SPDX-License-Identifier: MIT (For details, see https://github.com/awslabs/aws-icons-for-plantuml/blob/master/LICENSE)
+
+!include <awslib/AWSCommon>
+
+' Uncomment the following line to create simplified view
+' !include <awslib/AWSSimplified>
+
+!include <awslib/General/Users>
+!include <awslib/ApplicationIntegration/APIGateway>
+!include <awslib/SecurityIdentityAndCompliance/Cognito>
+!include <awslib/Compute/Lambda>
+!include <awslib/Database/DynamoDB>
+
+left to right direction
+
+Users(sources, "Events", "millions of users")
+APIGateway(votingAPI, "Voting API", "user votes")
+Cognito(userAuth, "User Authentication", "jwt to submit votes")
+Lambda(generateToken, "User Credentials", "return jwt")
+Lambda(recordVote, "Record Vote", "enter or update vote per user")
+DynamoDB(voteDb, "Vote Database", "one entry per user")
+
+sources --> userAuth
+sources --> votingAPI
+userAuth <--> generateToken
+votingAPI --> recordVote
+recordVote --> voteDb
+@enduml
+
+
+@startuml(id=azure)
+!include <azure/AzureCommon>
+!include <azure/Analytics/AzureEventHub>
+!include <azure/Analytics/AzureStreamAnalytics>
+!include <azure/Databases/AzureCosmosDb>
+
+left to right direction
+
+agent "Device Simulator" as devices #fff
+
+AzureEventHub(fareDataEventHub, "Fare Data", "PK: Medallion HackLicense VendorId; 3 TUs")
+AzureEventHub(tripDataEventHub, "Trip Data", "PK: Medallion HackLicense VendorId; 3 TUs")
+AzureStreamAnalytics(streamAnalytics, "Stream Processing", "6 SUs")
+AzureCosmosDb(outputCosmosDb, "Output Database", "1,000 RUs")
+
+devices --> fareDataEventHub
+devices --> tripDataEventHub
+fareDataEventHub --> streamAnalytics
+tripDataEventHub --> streamAnalytics
+streamAnalytics --> outputCosmosDb
+@enduml
+
+
+@startuml(id=C4)
+!include <C4/C4_Container>
+
+Person(personAlias, "Label", "Optional Description")
+Container(containerAlias, "Label", "Technology", "Optional Description")
+System(systemAlias, "Label", "Optional Description")
+
+System_Ext(extSystemAlias, "Label", "Optional Description")
+
+Rel(personAlias, containerAlias, "Label", "Optional Technology")
+
+Rel_U(systemAlias, extSystemAlias, "Label", "Optional Technology")
+@enduml
+
+
+@startuml(id=cloudinsight)
+!include <cloudinsight/tomcat>
+!include <cloudinsight/kafka>
+!include <cloudinsight/java>
+!include <cloudinsight/cassandra>
+
+title Cloudinsight sprites example
+
+skinparam monochrome true
+
+rectangle "<$tomcat>\nwebapp" as webapp
+queue "<$kafka>" as kafka
+rectangle "<$java>\ndaemon" as daemon
+database "<$cassandra>" as cassandra
+
+webapp -> kafka
+kafka -> daemon
+daemon --> cassandra
+@enduml
+
+
+@startuml(id=cloudogu)
+!include <cloudogu/common>
+!include <cloudogu/dogus/jenkins>
+!include <cloudogu/dogus/cloudogu>
+!include <cloudogu/dogus/scm>
+!include <cloudogu/dogus/smeagol>
+!include <cloudogu/dogus/nexus>
+!include <cloudogu/tools/k8s>
+
+node "Cloudogu Ecosystem" <<$cloudogu>> {
+	DOGU_JENKINS(jenkins, Jenkins) #ffffff
+	DOGU_SCM(scm, SCM-Manager) #ffffff
+	DOGU_SMEAGOL(smeagol, Smeagol) #ffffff
+	DOGU_NEXUS(nexus,Nexus) #ffffff
+}
+
+TOOL_K8S(k8s, Kubernetes) #ffffff
+
+actor developer
+
+developer --> smeagol : "Edit Slides"
+smeagol -> scm : Push
+scm -> jenkins : Trigger
+jenkins -> nexus : Deploy
+jenkins --> k8s : Deploy
+@enduml
+
+
+
+@startuml(id=elastic)
+!include <elastic/common>
+!include <elastic/elasticsearch/elasticsearch>
+!include <elastic/logstash/logstash>
+!include <elastic/kibana/kibana>
+
+ELASTICSEARCH(ElasticSearch, "Search and Analyze",database)
+LOGSTASH(Logstash, "Parse and Transform",node)
+KIBANA(Kibana, "Visualize",agent)
+
+Logstash -right-> ElasticSearch: Transformed Data
+ElasticSearch -right-> Kibana: Data to View
+@enduml
+
+
+
+@startuml(id=elastic2)
+'Adapted from https://github.com/Crashedmind/PlantUML-Elastic-icons/blob/master/All.puml
+
+'Elastic stuff here
+'================================
+
+!include <elastic/common>
+!include <elastic/apm/apm>
+!include <elastic/app_search/app_search>
+!include <elastic/beats/beats>
+!include <elastic/cloud/cloud>
+!include <elastic/cloud_in_kubernetes/cloud_in_kubernetes>
+!include <elastic/code_search/code_search>
+!include <elastic/ece/ece>
+!include <elastic/eck/eck>
+' Beware of the difference between Crashedmind and plantuml-stdlib version: with '_' usage!
+!include <elastic/elasticsearch/elasticsearch>
+!include <elastic/endpoint/endpoint>
+!include <elastic/enterprise_search/enterprise_search>
+!include <elastic/kibana/kibana>
+!include <elastic/logging/logging>
+!include <elastic/logstash/logstash>
+!include <elastic/maps/maps>
+!include <elastic/metrics/metrics>
+!include <elastic/siem/siem>
+!include <elastic/site_search/site_search>
+!include <elastic/stack/stack>
+!include <elastic/uptime/uptime>
+
+skinparam agentBackgroundColor White
+
+APM(apm)
+APP_SEARCH(app_search)
+BEATS(beats)
+CLOUD(cloud)
+CLOUD_IN_KUBERNETES(cloud_in_kubernetes)
+CODE_SEARCH(code_search)
+ECE(ece)
+ECK(eck)
+ELASTICSEARCH(elastic_search)
+ENDPOINT(endpoint)
+ENTERPRISE_SEARCH(enterprise_search)
+KIBANA(kibana)
+LOGGING(logging)
+LOGSTASH(logstash)
+MAPS(maps)
+METRICS(metrics)
+SIEM(siem)
+SITE_SEARCH(site_search)
+STACK(stack)
+UPTIME(uptime)
+@enduml
+
+
+
+@startuml(id=material)
+!include <material/common>
+' To import the sprite file you DON'T need to place a prefix!
+!include <material/folder_move>
+
+MA_FOLDER_MOVE(Red, 1, dir, rectangle, "A label")
+@enduml
+
+
+
+@startuml(id=material2)
+!include <material/common>
+' To import the sprite file you DON'T need to place a prefix!
+!include <material/folder_move>
+
+MA_FOLDER_MOVE(Red, 1, dir, rectangle, "A label") {
+}
+
+class foo {
+    bar
+}
+@enduml
+
+
+
+@startuml(id=kubernetes)
+!include <kubernetes/k8s-sprites-unlabeled-25pct>
+package "Infrastructure" {
+  component "<$master>\nmaster" as master
+  component "<$etcd>\netcd" as etcd
+  component "<$node>\nnode" as node
+}
+@enduml
+
+
+@startuml(id=logos)
+!include <logos/flask>
+!include <logos/kafka>
+!include <logos/kotlin>
+!include <logos/cassandra>
+
+title Gil Barbara's logos example
+
+skinparam monochrome true
+
+rectangle "<$flask>\nwebapp" as webapp
+queue "<$kafka>" as kafka
+rectangle "<$kotlin>\ndaemon" as daemon
+database "<$cassandra>" as cassandra
+
+webapp -> kafka
+kafka -> daemon
+daemon --> cassandra
+@enduml
+
+
+@startuml(id=logos2)
+scale 0.7
+!include <logos/apple-pay>
+!include <logos/dinersclub>
+!include <logos/discover>
+!include <logos/google-pay>
+!include <logos/jcb>
+!include <logos/maestro>
+!include <logos/mastercard>
+!include <logos/paypal>
+!include <logos/unionpay>
+!include <logos/visaelectron>
+!include <logos/visa>
+' ...
+
+title Gil Barbara's logos example - **Payment Scheme**
+
+actor customer
+rectangle "<$apple-pay>"    as ap
+rectangle "<$dinersclub>"   as dc
+rectangle "<$discover>"     as d
+rectangle "<$google-pay>"   as gp
+rectangle "<$jcb>"          as j
+rectangle "<$maestro>"      as ma
+rectangle "<$mastercard>"   as m
+rectangle "<$paypal>"       as p
+rectangle "<$unionpay>"     as up
+rectangle "<$visa>"         as v
+rectangle "<$visaelectron>" as ve
+rectangle "..." as etc
+
+customer --> ap
+customer ---> dc
+customer --> d
+customer ---> gp
+customer --> j
+customer ---> ma
+customer --> m
+customer ---> p
+customer --> up
+customer ---> v
+customer --> ve
+customer ---> etc
+@enduml
+
+
+
+@startuml(id=office)
+!include <tupadr3/common>
+
+!include <office/Servers/database_server>
+!include <office/Servers/application_server>
+!include <office/Concepts/firewall_orange>
+!include <office/Clouds/cloud_disaster_red>
+
+title Office Icons Example
+
+package "Sprites" {
+    OFF_DATABASE_SERVER(db,DB)
+    OFF_APPLICATION_SERVER(app,App-Server)
+    OFF_FIREWALL_ORANGE(fw,Firewall)
+    OFF_CLOUD_DISASTER_RED(cloud,Cloud)
+    db <-> app
+    app <--> fw
+    fw <.left.> cloud
+}
+@enduml
+
+
+
+@startuml(id=office2)
+!include <tupadr3/common>
+
+!include <office/servers/database_server>
+!include <office/servers/application_server>
+!include <office/Concepts/firewall_orange>
+!include <office/Clouds/cloud_disaster_red>
+
+' Used to center the label under the images
+skinparam defaultTextAlignment center
+
+title Extended Office Icons Example
+
+package "Use sprite directly" {
+    [Some <$cloud_disaster_red> object]
+}
+
+package "Different macro usages" {
+    OFF_CLOUD_DISASTER_RED(cloud1)
+    OFF_CLOUD_DISASTER_RED(cloud2,Default with text)
+    OFF_CLOUD_DISASTER_RED(cloud3,Other shape,Folder)
+    OFF_CLOUD_DISASTER_RED(cloud4,Even another shape,Database)
+    OFF_CLOUD_DISASTER_RED(cloud5,Colored,Rectangle, red)
+    OFF_CLOUD_DISASTER_RED(cloud6,Colored background) #red
+}
+@enduml
+
+
+
+@startuml(id=osa)
+'Adapted from https://github.com/Crashedmind/PlantUML-opensecurityarchitecture-icons/blob/master/all
+scale .5
+!include <osa/arrow/green/left/left>
+!include <osa/arrow/yellow/right/right>
+!include <osa/awareness/awareness>
+!include <osa/contract/contract>
+!include <osa/database/database>
+!include <osa/desktop/desktop>
+!include <osa/desktop/imac/imac>
+!include <osa/device_music/device_music>
+!include <osa/device_scanner/device_scanner>
+!include <osa/device_usb/device_usb>
+!include <osa/device_wireless_router/device_wireless_router>
+!include <osa/disposal/disposal>
+!include <osa/drive_optical/drive_optical>
+!include <osa/firewall/firewall>
+!include <osa/hub/hub>
+!include <osa/ics/drive/drive>
+!include <osa/ics/plc/plc>
+!include <osa/ics/thermometer/thermometer>
+!include <osa/id/card/card>
+!include <osa/laptop/laptop>
+!include <osa/lifecycle/lifecycle>
+!include <osa/lightning/lightning>
+!include <osa/media_flash/media_flash>
+!include <osa/media_optical/media_optical>
+!include <osa/media_tape/media_tape>
+!include <osa/mobile/pda/pda>
+!include <osa/padlock/padlock>
+!include <osa/printer/printer>
+!include <osa/site_branch/site_branch>
+!include <osa/site_factory/site_factory>
+!include <osa/vpn/vpn>
+!include <osa/wireless/network/network>
+
+rectangle "OSA" {
+rectangle "Left:\n <$left>"
+rectangle "Right:\n <$right>"
+rectangle "Awareness:\n <$awareness>"
+rectangle "Contract:\n <$contract>"
+rectangle "Database:\n <$database>"
+rectangle "Desktop:\n <$desktop>"
+rectangle "Imac:\n <$imac>"
+rectangle "Device_music:\n <$device_music>"
+rectangle "Device_scanner:\n <$device_scanner>"
+rectangle "Device_usb:\n <$device_usb>"
+rectangle "Device_wireless_router:\n <$device_wireless_router>"
+rectangle "Disposal:\n <$disposal>"
+rectangle "Drive_optical:\n <$drive_optical>"
+rectangle "Firewall:\n <$firewall>"
+rectangle "Hub:\n <$hub>"
+rectangle "Drive:\n <$drive>"
+rectangle "Plc:\n <$plc>"
+rectangle "Thermometer:\n <$thermometer>"
+rectangle "Card:\n <$card>"
+rectangle "Laptop:\n <$laptop>"
+rectangle "Lifecycle:\n <$lifecycle>"
+rectangle "Lightning:\n <$lightning>"
+rectangle "Media_flash:\n <$media_flash>"
+rectangle "Media_optical:\n <$media_optical>"
+rectangle "Media_tape:\n <$media_tape>"
+rectangle "Pda:\n <$pda>"
+rectangle "Padlock:\n <$padlock>"
+rectangle "Printer:\n <$printer>"
+rectangle "Site_branch:\n <$site_branch>"
+rectangle "Site_factory:\n <$site_factory>"
+rectangle "Vpn:\n <$vpn>"
+rectangle "Network:\n <$network>"
+}
+@enduml
+
+
+@startuml(id=osa2)
+scale .5
+!include <osa/user/audit/audit>
+'beware of 'hat-sprite'
+!include <osa/user/black/hat/hat-sprite>
+!include <osa/user/blue/blue>
+!include <osa/user/blue/security/specialist/specialist>
+!include <osa/user/blue/sysadmin/sysadmin>
+!include <osa/user/blue/tester/tester>
+!include <osa/user/blue/tie/tie>
+!include <osa/user/green/architect/architect>
+!include <osa/user/green/business/manager/manager>
+!include <osa/user/green/developer/developer>
+!include <osa/user/green/green>
+!include <osa/user/green/operations/operations>
+!include <osa/user/green/project/manager/manager>
+!include <osa/user/green/service/manager/manager>
+!include <osa/user/green/warning/warning>
+!include <osa/user/large/group/group>
+!include <osa/users/blue/green/green>
+!include <osa/user/white/hat/hat>
+
+listsprites
+@enduml
+
+
+
+@startuml(id=tupadr3)
+!include <tupadr3/common>
+!include <tupadr3/font-awesome/server>
+!include <tupadr3/font-awesome/database>
+
+title Styling example
+
+FA_SERVER(web1,web1) #Green
+FA_SERVER(web2,web2) #Yellow
+FA_SERVER(web3,web3) #Blue
+FA_SERVER(web4,web4) #YellowGreen
+
+FA_DATABASE(db1,LIVE,database,white) #RoyalBlue
+FA_DATABASE(db2,SPARE,database) #Red
+
+db1 <--> db2
+
+web1 <--> db1
+web2 <--> db1
+web3 <--> db1
+web4 <--> db1
+@enduml
+
+
+
+@startuml(id=aws)
+!include <aws/common>
+!include <aws/Storage/AmazonS3/AmazonS3>
+
+AMAZONS3(s3_internal)
+AMAZONS3(s3_partner,"Vendor's S3")
+s3_internal <- s3_partner
+@enduml

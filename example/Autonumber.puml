@@ -1,0 +1,53 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Autonumber.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("autonumber 화살표 자동 순번 부여")
+
+actor Bob
+actor Alice
+'
+group 자동 순번 기본값
+    autonumber
+    Bob -> Alice : 환영 인사 요청
+    Bob -> Alice : 환영 인사 요청 수 +1
+    Bob <- Alice : 환영 인사 응답
+    Bob -> Alice : 환영 인사 응답 수 +1
+end group
+
+rnote across
+    <code>
+    autonumber
+    </code>
+end note
+
+group 자동 순번 시작 번호 15로 시작
+    autonumber 15
+    Bob -> Alice : 환영 인사 요청
+    Bob -> Alice : 환영 인사 요청 수 +1
+    Bob <- Alice : 환영 인사 응답
+    Bob -> Alice : 환영 인사 응답 수 +1
+end group
+
+rnote across
+    <code>
+    autonumber 15
+    </code>
+end note
+
+group 자동 순번 시작 번호 40으로 시작, +10씩 증가
+    autonumber 40 10
+    Bob -> Alice : Yet another authentication Request
+    Bob <- Alice : Yet another authentication Response
+end group
+
+rnote across
+    <code>
+    autonumber 40 10
+    </code>
+end note
+'<<---------------- END UML ---------------->>
+@enduml

@@ -1,0 +1,361 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Component.puml(id=EX1)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("시퀀스 다이어그램의 컴포넌트 종류")
+
+'blocks of example code
+box ""컴포넌트""
+    box ""참여자"" #FFFFFF
+        actor Actor as 사용자
+        participant Participant as 참여자
+        collections Collections as 콜렉션
+    endbox
+
+    box ""참여자2"" #FFFFFF
+        participant Participant2 [
+        =참여자2
+        ----
+        이렇게도
+        선언할 수 있음
+        ]
+    endbox
+
+    box ""참여자 외"" #FFFFFF
+        boundary Boundary as 경계
+        control Control as 제어
+        entity Entity as 엔티티
+        database Database as 데이터베이스
+        queue Queue as 큐
+    endbox
+end box
+
+rnote across
+사실 정확히 언제 어떤 컴포넌트를 써야 할지 모르겠음.
+* 참여자: 시스템이나 사용자 간의 상호 작용을 표현할 때 사용한다.
+* 콜렉션: 여러 시스템을 표현할 때 사용한다.
+end note
+
+참여자 -> 사용자 : To actor
+참여자 -> 경계 : To boundary
+참여자 -> 제어 : To control
+참여자 -> 엔티티 : To entity
+참여자 -> 데이터베이스 : To database
+참여자 -> 콜렉션 : To collections
+참여자 -> 큐 : To queue
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+'참여자 순서 정의
+@startuml Component.puml(id=EX3)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("참여자 순서 정의")
+
+'blocks of example code
+actor Bob order 1 #red
+actor Alice order 4 #blue
+actor Yoon order 3 #green
+actor May order 2 #yellow
+
+Alice->Bob: Authentication Request
+Bob->Alice: Authentication Response
+Bob->Yoon: Log transaction
+
+'Explain to How to use
+rnote across
+<code>
+{Component} {UID} order {number}
+</code>
+----
+<code>
+actor Bob order 1 #red
+actor Alice order 4 #blue
+actor Yoon order 3 #green
+actor May order 2 #yellow
+</code>
+end note
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml Component.puml(id=EX4)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("메시지 텍스트 배치")
+
+right header ※ 예제: 화살표 역방향
+'화살표 역방향
+
+'blocks of example code
+skinparam sequenceMessageAlign reverseDirection
+actor Bob
+actor Alice
+actor Yoon
+actor May
+Bob -> Alice : hello
+Bob -> Yoon : Howdy
+Bob -> May : Long time no see
+
+'Explain to How to use
+rnote across
+<code>
+skinparam sequenceMessageAlign {값}
+</code>
+
+<#FFF,#000>|= 설명 |= 정방향 |= 역방향 |= 좌 |= 우 |
+<#FFF>| 선언  | direction | reverseDirection | left | right |
+end note
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Component.puml(id=EX5)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("응답 메세지 텍스트를 화살표 아래에 배치")
+
+'blocks of example code
+skinparam responseMessageBelowArrow true
+Bob -> Alice : hello
+Alice -> Bob : ok
+
+'Explain to How to use
+rnote across
+    <code>
+    skinparam responseMessageBelowArrow true
+    </code>
+end note
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Component.puml(id=EX6)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("화살표 스타일 변경")
+
+Bob ->x Alice
+Bob -> Alice
+Bob ->> Alice
+Bob -/ Alice
+Bob //- Alice
+Bob //-- Alice
+
+Bob ->o Alice
+Bob o//-- Alice
+
+Bob <-> Alice
+Bob <->o Alice
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Component.puml(id=EX7)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("요소 별 색상 부여")
+Bob -[#red]> Alice : hello
+Alice -[#0000FF]->Bob : ok
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Component.puml(id=EX8)
+!include ../example/Structure.puml!OPTION_COMMON
+'!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("autonumber 화살표 자동 순번 부여")
+
+actor Bob
+actor Alice
+'
+group 자동 순번 기본값
+    autonumber
+    Bob -> Alice : 환영 인사 요청
+    Bob -> Alice : 환영 인사 요청 수 +1
+    Bob <- Alice : 환영 인사 응답
+    Bob -> Alice : 환영 인사 응답 수 +1
+end group
+
+rnote across
+    <code>
+    autonumber
+    </code>
+end note
+
+group 자동 순번 시작 번호 15로 시작
+    autonumber 15
+    Bob -> Alice : 환영 인사 요청
+    Bob -> Alice : 환영 인사 요청 수 +1
+    Bob <- Alice : 환영 인사 응답
+    Bob -> Alice : 환영 인사 응답 수 +1
+end group
+
+rnote across
+    <code>
+    autonumber 15
+    </code>
+end note
+
+group 자동 순번 시작 번호 40으로 시작, +10씩 증가
+    autonumber 40 10
+    Bob -> Alice : Yet another authentication Request
+    Bob <- Alice : Yet another authentication Response
+end group
+
+rnote across
+    <code>
+    autonumber 40 10
+    </code>
+end note
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Component.puml(id=EX9)
+!include ../example/Structure.puml!OPTION_COMMON
+!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("레이아웃 표현")
+/'
+rnote across
+나꼼수..
+end note
+'/
+
+skinparam pathHoverColor green
+skinparam svgLinkTarget _parent
+
+actor aa [[http://plantuml.com/link]]
+actor bb [[http://plantuml.com/link]]
+
+aa->bb:  [[https://google.com 링크 텍스트222]]
+
+class Foo2 [[http://www.yahoo.com/Foo2]] {
+  +double[] x
+  +double y
+}
+Foo2 --> Foo3
+
+note left: dsdsd [[https://google.com 링크 텍스트]]
+
+
+class Foo {
+**Bar(Model)**
+|_ prop
+|_ **Bom(Model)**
+  |_ prop2
+  |_ prop3
+    |_ prop3.1
+|_ prop4
+--
+}
+note bottom
+    Class에 Tree 정의
+    ----
+    <code>
+    class Foo {
+        **Bar(Model)**
+        |_ prop
+        |_ **Bom(Model)**
+          |_ prop2
+          |_ prop3
+            |_ prop3.1
+        |_ prop4
+        }
+        --
+    </code>
+end note
+
+
+rectangle "<html>, <body>, etc." as a  {
+  rectangle "<div>..." as b #antiquewhite {
+    rectangle "<video>.../n/n/n" as c
+  }
+}
+note bottom
+    중접 박스 레이아웃 표현(rectangle)
+    ----
+    <code>
+    rectangle "<html>, <body>, etc." as a  {
+      rectangle "<div>..." as b #antiquewhite {
+        rectangle "<video>.../n/n/n" as c
+      }
+    }
+    </code>
+end note
+
+rectangle a2 {
+  rectangle b2 {
+    rectangle c2
+  }
+  rectangle d2
+  rectangle e2
+
+  b2 -[hidden]-> c2
+  c2 -[hidden]-> d2
+}
+note bottom
+    중접 박스 레이아웃 표현(rectangle)
+    ----
+    <code>
+    rectangle a2 {
+      rectangle b2 {
+        rectangle c2
+      }
+      rectangle d2
+    }
+    </code>
+end note
+
+/'
+start
+:[[https://ox-hugo.scripter.co/ ox-hugo homepage]];
+stop
+#+end_src
+#+caption: An SVG with a *hyperlink*
+#+attr_html: :inlined t
+#+RESULTS:
+[[file:D:/WORK/workspace/work/diagram/sequence/_Mobmixer_cookieMatch_v0_0_1_puml.svg]]'/
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml Component.puml(id=EX10)
+!include ../example/Structure.puml!OPTION_COMMON
+!include ../example/Structure.puml!OPTION_ALLOWMIXING
+!include ../example/Structure.puml!OPTION_HIDE_FOOTER
+
+actor aa [[http://plantuml.com/link]]
+actor bb [[http://plantuml.com/link]]
+
+aa->bb:  [[https://google.com 링크 텍스트222]]
+
+class Foo2 [[http://www.yahoo.com/Foo2]] {
+  +double[] x
+  +double y
+}
+Foo2 --> Foo3
+
+note left: dsdsd [[https://google.com 링크 텍스트]]
+'<<---------------- END UML ---------------->>
+@enduml

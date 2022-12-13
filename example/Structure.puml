@@ -1,0 +1,172 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml structure.puml(id=OPTION_USE_TEOZ)
+'teoz 레이아웃 사용
+!pragma teoz true
+'다이어그램 기본 글꼴 설정
+skinparam DefaultFontName 나눔바른고딕
+@enduml
+
+
+@startuml structure.puml(id=OPTION_COMMON)
+'teoz 레이아웃 사용
+!pragma teoz true
+'다이어그램 기본 글꼴 설정
+skinparam DefaultFontName 나눔바른고딕
+'시퀀스 다이어그램에 한해 스타일 설정
+skinparam Sequence {
+    'Box Style
+    BoxPadding 5
+}
+
+!procedure setTitle($top_label)
+'다이어그램 제목 부여
+    title <$top_label>
+!endprocedure
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml structure.puml(id=OPTION_ALLOWMIXING)
+'시퀀스 다이어그램과 클래스 다이어그램 컴포넌트 혼합 사용
+allowmixing
+'hide 1
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml structure.puml(id=OPTION_HIDE_HEADER)
+'헤더 숨김
+hide header
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml structure.puml(id=OPTION_HIDE_FOOTER)
+'푸터 숨김
+hide footbox
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml structure.puml(id=OPTION_HIDE_UNLINKED)
+'미연결 개체 숨김
+hide @unlinked
+@enduml
+
+@startuml structure.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+actor aa [[http://plantuml.com/link]]
+actor bb [[http://plantuml.com/link]]
+
+aa->bb:  [[https://google.com 링크 텍스트222]]
+
+class Foo2 [[http://www.yahoo.com/Foo2]] {
+  +double[] x
+  +double y
+}
+Foo2 --> Foo3
+
+note left: dsdsd [[https://google.com 링크 텍스트]]
+@enduml
+
+
+@startuml structure.puml(id=EX2)
+title
+ <u>Simple</u> communication example
+ on <i>several</i> lines and using <font color=red>html</font>
+ This is hosted by <img:sourceforge.jpg>
+end title
+
+Alice -> Bob: Authentication Request
+Bob -> Alice: Authentication Response
+@enduml
+
+
+@startuml structure.puml(id=EX3)
+
+skinparam backgroundcolor AntiqueWhite/Gold
+skinparam classBackgroundColor Wheat|CornflowerBlue
+
+class Foo #red-green
+'note left of Foo #blue/9932CC
+    title
+    표 그리기
+    파이프로 열 구분한다.
+    <#FFF,#000>|= 설명 |= 정방향 |= 역방향 |= 좌 |= 우 |
+    <#FFF>| 선언  | direction | reverseDirection | left | right |
+    end title
+'end note
+
+package example #GreenYellow/LightGoldenRodYellow {
+  class Dummy
+}
+@enduml
+
+
+
+@startuml structure.puml(id=EX4)
+object demo {
+  * Bullet list
+  * Second item
+}
+note left
+  * Bullet list
+  * Second item
+  ** Sub item
+end note
+
+legend
+  # Numbered list
+  # Second item
+  ## Sub item
+  ## Another sub item
+        * Can't quite mix
+        * Numbers and bullets
+  # Third item
+end legend
+@enduml
+
+
+@startuml structure.puml(id=EX5)
+Alice -> Bob : hello --there-- here
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stricken-out--
+  This is __underlined__
+  This is ~~wave-underlined~~
+end note
+@enduml
+
+
+@startuml structure.puml(id=EX6)
+object demo {
+  This is not ~___underscored__.
+  This is not ~""monospaced"".
+}
+@enduml
+
+
+@startuml structure.puml(id=EX7)
+Alice -> Bob : Hello <:1f600:>
+return <:innocent:>
+Alice -> Bob : Without color: <#0:sunglasses:>
+Alice -> Bob : Change color: <#green:sunny:>
+@enduml
+
+
+@startuml structure.puml(id=EX8)
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+@enduml

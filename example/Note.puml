@@ -1,0 +1,114 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Note.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+'!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("메모 예1")
+
+'blocks of example code
+circle AA
+
+'왼쪽
+note left of AA: 메모 LEFT
+
+'오른쪽
+note right of AA: 메모 RIGHT
+
+'상단
+note top of AA: 메모 TOP
+
+'하단
+note bottom of AA: 메모 BOTTOM
+
+@enduml
+
+
+@startuml Note.puml(id=EX2)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+'!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("메모 예2")
+
+'blocks of example code
+actor Bob #red
+actor Alice #blue
+actor Yoon #green
+actor May #yellow
+
+'상대적 왼쪽
+note left of Yoon
+    note left of Yoon
+end note
+
+'상대적 오른쪽
+note right of Alice
+    note right of Alice
+end note
+
+'상대적인
+note over Yoon
+    note over Yoon
+end note
+
+'모든 개체를 아우르는
+note across
+    note across
+end note
+@enduml
+
+
+@startuml Note.puml(id=EX3)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+'!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("메모 예3")
+
+'blocks of example code
+actor Bob #red
+
+'사각형
+note over Bob
+    note over Bob: 스티키(기본값)
+end note
+
+'사각형
+rnote over Bob
+    rnote over Bob: 사각형
+end note
+
+'육각형
+hnote over Bob
+    hnote over Bob: 육각형
+end note
+@enduml
+
+@startuml
+note over Alice : 메모를
+note over Bob : 순서대로 정렬
+
+note over Alice : 메모를
+/ note over Bob : 나란히 정렬
+
+@enduml
+
+
+@startuml
+'연결
+interface "Data Access" as DA
+
+DA - [First Component]
+[First Component] ..> HTTP : use
+
+note left of HTTP : Web Service only
+
+note right of [First Component]
+  A note can also
+  be on several lines
+end note
+
+@enduml

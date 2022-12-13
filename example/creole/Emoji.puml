@@ -1,0 +1,44 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Emoji.puml(id=EX1)
+Alice -> Bob : Hello <:1f600:>
+return <:innocent:>
+Alice -> Bob : Without color: <#0:sunglasses:>
+Alice -> Bob : Change color: <#green:sunny:>
+@enduml
+
+
+@startuml Emoji.puml(id=EX2)
+emoji 26
+@enduml
+
+
+@startuml Emoji.puml(id=EX3)
+emoji 27
+@enduml
+
+
+@startuml Emoji.puml(id=EX4)
+emoji 1F3
+@enduml
+
+
+@startuml Emoji.puml(id=EX5)
+emoji 1F4
+@enduml
+
+
+@startuml Emoji.puml(id=EX6)
+emoji 1F5
+@enduml
+
+
+@startuml Emoji.puml(id=EX7)
+emoji 1F6
+@enduml
+
+
+@startuml Emoji.puml(id=EX8)
+emoji 1F9
+@enduml

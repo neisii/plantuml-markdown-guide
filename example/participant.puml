@@ -1,0 +1,11 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml participant.puml(id=EX1)
+participant A #FF0
+participant B #0F0
+
+A ->(10) B : 10도 삐뚤어지겠어
+A ->(50) B : 50도 삐뚤어지겠어
+B ->(90) A : 나도 질 수 없지, 90도 가즈아
+@enduml

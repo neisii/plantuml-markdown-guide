@@ -1,0 +1,31 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Include.puml(id=EX1)
+!include  D:/WORK/workspace/my/plantuml-markdown-guide/example/practice-include.puml!TAG2
+!include  D:/WORK/workspace/my/plantuml-markdown-guide/example/practice-include.puml!TAG1
+!include  D:/WORK/workspace/my/plantuml-markdown-guide/example/practice-include.puml!TAG3
+'note left Alice: This is description
+AAA -> BBB
+@enduml
+
+
+@startuml Include.puml(id=EX2)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+actor aa [[http://plantuml.com/link]]
+actor bb [[http://plantuml.com/link]]
+
+aa->bb:  [[https://google.com 링크 텍스트222]]
+
+class Foo2 [[http://www.yahoo.com/Foo2]] {
+  +double[] x
+  +double y
+}
+Foo2 --> Foo3
+
+note left: dsdsd [[https://google.com 링크 텍스트]]
+'<<---------------- END UML ---------------->>
+@enduml

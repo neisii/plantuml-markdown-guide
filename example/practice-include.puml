@@ -1,0 +1,14 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml{practice-include.puml, This is UML Caption., width=100px, option_other_tools=value}(id=TAG1)
+Alice->Bob : TAG1
+@enduml
+
+@startuml{practice-include.puml, This is UML Caption., width=100px, option_other_tools=value}(id=TAG2)
+Alice->Bob : TAG2
+@enduml
+
+@startuml{practice-include.puml, This is UML Caption., width=100px, option_other_tools=plantuml.diagramsRoot:D:/WORK/workspace/my/plantuml-markdown-guide/example}(id=TAG3)
+Alice-[#blue]>Bob : TAG3
+@enduml

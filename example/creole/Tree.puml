@@ -1,0 +1,104 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Treepuml(id=EX1)
+class Foo {
+**Bar (Model)**
+|_ prop
+|_ **Bom (Model)**
+  |_ prop2
+  |_ prop3
+    |_ prop3.1
+|_ prop4 :(
+--
+}
+@enduml
+
+
+@startuml Treepuml(id=EX2)
+[A] as A
+rectangle "Box B" {
+    component B [
+        Level 1
+        |_ Level 2a
+          |_ Level 3a
+          |_ Level 3b
+          |_ Level 3c
+            |_ Level 4a
+          |_ Level 3d
+        |_ Level 2b
+          |_ Level 3e
+    ]
+}
+A -> B
+@enduml
+
+
+
+
+
+@startuml Treepuml(id=EX41)
+object demo {
+  * Bullet list
+  * Second item
+}
+note left
+  * Bullet list
+  * Second item
+  ** Sub item
+end note
+
+legend
+  # Numbered list
+  # Second item
+  ## Sub item
+  ## Another sub item
+        * Can't quite mix
+        * Numbers and bullets
+  # Third item
+end legend
+@enduml
+
+
+@startuml Treepuml(id=EX5)
+Alice -> Bob : hello --there-- here
+... Some ~~long delay~~ ...
+Bob -> Alice : ok
+note left
+  This is **bold**
+  This is //italics//
+  This is ""monospaced""
+  This is --stricken-out--
+  This is __underlined__
+  This is ~~wave-underlined~~
+end note
+@enduml
+
+
+@startuml Treepuml(id=EX6)
+object demo {
+  This is not ~___underscored__.
+  This is not ~""monospaced"".
+}
+@enduml
+
+
+@startuml Treepuml(id=EX7)
+Alice -> Bob : Hello <:1f600:>
+return <:innocent:>
+Alice -> Bob : Without color: <#0:sunglasses:>
+Alice -> Bob : Change color: <#green:sunny:>
+@enduml
+
+
+@startuml Treepuml(id=EX8)
+usecase UC1 as "
+= Extra-large heading
+Some text
+== Large heading
+Other text
+=== Medium heading
+Information
+....
+==== Small heading"
+@enduml

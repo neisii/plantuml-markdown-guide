@@ -1,0 +1,52 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Message.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+setTitle("메시지 텍스트 배치")
+right header ※ 예제: 화살표 역방향
+'화살표 역방향
+
+'blocks of example code
+skinparam sequenceMessageAlign reverseDirection
+actor Bob
+actor Alice
+actor Yoon
+actor May
+Bob -> Alice : hello
+Bob -> Yoon : Howdy
+Bob -> May : Long time no see
+
+'Explain to How to use
+rnote across
+<code>
+skinparam sequenceMessageAlign {값}
+</code>
+
+<#FFF,#000>|= 설명 |= 정방향 |= 역방향 |= 좌 |= 우 |
+<#FFF>| 선언  | direction | reverseDirection | left | right |
+end note
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Message.puml(id=EX2)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("응답 메세지 텍스트를 화살표 아래에 배치")
+
+'blocks of example code
+skinparam responseMessageBelowArrow true
+Bob -> Alice : hello
+Alice -> Bob : ok
+
+'Explain to How to use
+rnote across
+    <code>
+    skinparam responseMessageBelowArrow true
+    </code>
+end note
+'<<---------------- END UML ---------------->>
+@enduml

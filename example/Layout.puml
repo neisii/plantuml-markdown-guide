@@ -1,0 +1,242 @@
+'작성/수정자 : 백가희/백가희
+'작성/수정일 : 2022.12.06/2022.12.06
+
+@startuml Layout.puml(id=EX1)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("중첩된 레이아웃 표현")
+
+box ""client_label""
+    box ""Browsers"" #FFFFFF
+        actor "user" as user <<request>>
+        participant media_label as media_label <<request>>
+    endbox
+end box
+
+box ""InternalService""
+    box ""Servers"" #FFFFFF
+        participant script_label as script_label
+        participant sender_label as sender_label
+        participant cookie_match_label as cookie_match_label
+    endbox
+end box
+
+box ""ExternalService""
+    box #FFFFFF
+        collections dsp_label
+    endbox
+end box
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+@startuml Layout.puml(id=EX2)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("중첩된 레이아웃 표현")
+
+box ""client_label""
+    box ""Browsers"" #FFFFFF
+        actor "user" as user <<request>>
+        participant media_label as media_label <<request>>
+    endbox
+end box
+
+box ""InternalService""
+    box ""Servers"" #FFFFFF
+        participant script_label as script_label
+        participant sender_label as sender_label
+        participant cookie_match_label as cookie_match_label
+    endbox
+end box
+
+box ""ExternalService""
+    box #FFFFFF
+        collections dsp_label
+    endbox
+end box
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+@startuml Layout.puml(id=EX3)
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_ALLOWMIXING
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_COMMON
+!include D:/WORK/workspace/my/plantuml-markdown-guide/example/Structure.puml!OPTION_HIDE_FOOTER
+
+setTitle("레이아웃 표현")
+/'
+rnote across
+나꼼수..
+end note
+'/
+
+skinparam pathHoverColor green
+skinparam svgLinkTarget _parent
+
+actor aa [[http://plantuml.com/link]]
+actor bb [[http://plantuml.com/link]]
+
+aa->bb:  [[https://google.com 링크 텍스트222]]
+
+class Foo2 [[http://www.yahoo.com/Foo2]] {
+  +double[] x
+  +double y
+}
+Foo2 --> Foo3
+
+note left: dsdsd [[https://google.com 링크 텍스트]]
+
+
+class Foo {
+**Bar(Model)**
+|_ prop
+|_ **Bom(Model)**
+  |_ prop2
+  |_ prop3
+    |_ prop3.1
+|_ prop4
+--
+}
+note bottom
+    Class에 Tree 정의
+    ----
+    <code>
+    class Foo {
+        **Bar(Model)**
+        |_ prop
+        |_ **Bom(Model)**
+          |_ prop2
+          |_ prop3
+            |_ prop3.1
+        |_ prop4
+        }
+        --
+    </code>
+end note
+
+
+rectangle "<html>, <body>, etc." as a  {
+  rectangle "<div>..." as b #antiquewhite {
+    rectangle "<video>.../n/n/n" as c
+  }
+}
+note bottom
+    중접 박스 레이아웃 표현(rectangle)
+    ----
+    <code>
+    rectangle "<html>, <body>, etc." as a  {
+      rectangle "<div>..." as b #antiquewhite {
+        rectangle "<video>.../n/n/n" as c
+      }
+    }
+    </code>
+end note
+
+rectangle a2 {
+  rectangle b2 {
+    rectangle c2
+  }
+  rectangle d2
+  rectangle e2
+
+  b2 -[hidden]-> c2
+  c2 -[hidden]-> d2
+}
+note bottom
+    중접 박스 레이아웃 표현(rectangle)
+    ----
+    <code>
+    rectangle a2 {
+      rectangle b2 {
+        rectangle c2
+      }
+      rectangle d2
+    }
+    </code>
+end note
+
+/'
+start
+:[[https://ox-hugo.scripter.co/ ox-hugo homepage]];
+stop
+#+end_src
+#+caption: An SVG with a *hyperlink*
+#+attr_html: :inlined t
+#+RESULTS:
+[[file:D:/WORK/workspace/work/diagram/sequence/_Mobmixer_cookieMatch_v0_0_1_puml.svg]]'/
+
+'<<---------------- END UML ---------------->>
+@enduml
+
+
+
+@startuml Layout.puml(id=EX4)
+== Initialization ==
+
+Alice -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+== Repetition ==
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+
+@enduml
+
+
+@startuml Layout.puml(id=EX5)
+'지연
+Alice -> Bob: Authentication Request
+...
+Bob --> Alice: Authentication Response
+...5 minutes latter...
+Bob --> Alice: Bye !
+
+@enduml
+
+@startuml Layout.puml(id=EX6)
+'줄바꿈
+skinparam maxMessageSize 50
+participant a
+participant b
+
+a -> b :this/nis/nmanually/ndone
+a -> b :this is a very long message on several words
+@enduml
+
+
+
+@startuml Layout.puml(id=EX7)
+'공백
+
+Alice -> Bob: message 1
+Bob --> Alice: ok
+|||
+Alice -> Bob: message 2
+Bob --> Alice: ok
+||45||
+Alice -> Bob: message 3
+Bob --> Alice: ok
+
+@enduml
+
+
+@startuml
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+
+box "Foo1"
+participant Alice1
+participant Alice2
+end box
+box "Foo2"
+participant Bob1
+participant Bob2
+end box
+Alice1 -> Bob1 : hello
+Alice1 -> Out : out
+@enduml
