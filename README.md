@@ -1,8 +1,6 @@
 # PlantUML A-Z
 -- PlantUML 기본 문법부터 응용까지 --
 
-
-
 # 목차
 
 ## 개요
@@ -61,10 +59,15 @@
 ## 환경
 * JetBrains IntelliJ IDEA 2022.2.3 (Ultimate Edition)
 * [plantuml-1.2022.14.jar](https://github.com/plantuml/plantuml/releases/tag/v1.2022.13)
-  ![Last PlantUML version apply to markdown plugin](D:/WORK/workspace/my/plantuml-markdown-guide/resource/intellij-plantuml-integration.png)
-* [Chrome Extension - MD Reader](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
-* [Chrome Extension - Markdown Viewer](https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk)
-* [Chrome Extension - Markdown Preview Plus Dz特别版](https://chrome.google.com/webstore/detail/markdown-preview-plus-dz%E7%89%B9/mbbfdipmmlbkfdkeklpioafmdcodhfli)
+* [Chrome Extension - Pegmatite](https://chrome.google.com/webstore/detail/pegmatite/jegkfbnfbfnohncpcfcimepibmhlkldo)
+
+[//]: # (  ![Last PlantUML version apply to markdown plugin]&#40;D:/WORK/workspace/my/plantuml-markdown-guide/resource/intellij-plantuml-integration.png&#41;)
+
+[//]: # (* [Chrome Extension - MD Reader]&#40;https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg&#41;)
+
+[//]: # (* [Chrome Extension - Markdown Viewer]&#40;https://chrome.google.com/webstore/detail/markdown-viewer/ckkdlimhmcjmikdlpkmbgfkaikojcbjk&#41;)
+
+[//]: # (* [Chrome Extension - Markdown Preview Plus Dz特别版]&#40;https://chrome.google.com/webstore/detail/markdown-preview-plus-dz%E7%89%B9/mbbfdipmmlbkfdkeklpioafmdcodhfli&#41;)
 
 ## 다이어그램의 시작 선언
 ### 기본 선언
@@ -85,10 +88,13 @@ version
 * 결과
 * ![PlantUML 버전 확인](resource/K0NzOJ2yf8.png)
 
-1. 로컬 파일 삽입
- ```
-!include ../example/Version.puml!EX1
+1. 로컬 파일 삽입(미리보기 확인2)
 ```
+@startuml
+!include https://neisii.github.io/plantuml-markdown-guide/example/Version.puml!EX1
+@enduml
+```
+
 ```puml
 !include ../example/Version.puml!EX1
 ```
